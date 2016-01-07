@@ -16,4 +16,44 @@ RSpec.feature "CreatesDojos", type: :feature do
     expect(page).to have_content "Winter's Path Dojo"
     expect(page).to have_link "Invite New Combatant"
   end
+
+  context "invalid dojo attributes" do
+    scenario "user doesn't provide name" do
+      visit root_path
+      click_on "Register New Dojo"
+
+
+      fill_in "Password", with: "serenity"
+      click_on "Register"
+
+      expect(current_path).to eq new_dojo_path
+      expect(page).to have_content "Dojo name cannot be blank"
+    end
+
+    scenario "user inputs name already taken" do
+      Dojo.create(dojo_name: "Beth's Awesome Dojo", password: "1234")
+      visit root_path
+      click_on "Register New Dojo"
+
+
+      fill_in "Dojo name", with: "Beth's Awesome Dojo"
+      fill_in "Password", with: "some_password"
+      click_on "Register"
+
+      expect(current_path).to eq new_dojo_path
+      expect(page).to have_content "Password cannot be blank"
+    end
+
+    scenario "user doesn't provide a password" do
+      visit root_path
+      click_on "Register New Dojo"
+
+
+      fill_in "Dojo name", with: "Beth's Awesome Dojo"
+      click_on "Register"
+
+      expect(current_path).to eq new_dojo_path
+      expect(page).to have_content "Password cannot be blank"
+    end
+  end
 end

@@ -14,5 +14,8 @@
 
 <%= yield %>
 
+<%= link_to("Logout #{current_dojo.dojo_name}", logout_path, method: :delete) if current_dojo %>
+
+
 </body>
 </html>

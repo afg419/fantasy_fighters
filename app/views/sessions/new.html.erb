@@ -1,0 +1,11 @@
+<%= form_for(:session, url: login_path) do |f| %>
+
+  <br><%= f.label :dojo_name %>
+  <br><%= f.text_field :dojo_name %>
+
+  <br><%= f.label :password %>
+  <br><%= f.password_field :password %>
+
+  <br><%= f.submit "Login" %>
+
+<% end %>

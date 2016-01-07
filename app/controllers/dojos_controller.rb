@@ -16,6 +16,7 @@ class DojosController < ApplicationController
   end
 
   def show
+    current_dojo
   end
 
 private

@@ -10,6 +10,7 @@ class DojosController < ApplicationController
       session[:dojo_id] = @dojo.id
       redirect_to dojo_path
     else
+      flash[:error] = @dojo.errors.full_messages.join(", ")
       render :new
     end
   end

@@ -22,12 +22,10 @@ RSpec.feature "CreatesDojos", type: :feature do
       visit root_path
       click_on "Register New Dojo"
 
-
       fill_in "Password", with: "serenity"
       click_on "Register"
 
-      expect(current_path).to eq new_dojo_path
-      expect(page).to have_content "Dojo name cannot be blank"
+      expect(page).to have_content "Dojo name can't be blank"
     end
 
     scenario "user inputs name already taken" do
@@ -40,8 +38,7 @@ RSpec.feature "CreatesDojos", type: :feature do
       fill_in "Password", with: "some_password"
       click_on "Register"
 
-      expect(current_path).to eq new_dojo_path
-      expect(page).to have_content "Password cannot be blank"
+      expect(page).to have_content "Dojo name has already been taken"
     end
 
     scenario "user doesn't provide a password" do
@@ -52,8 +49,7 @@ RSpec.feature "CreatesDojos", type: :feature do
       fill_in "Dojo name", with: "Beth's Awesome Dojo"
       click_on "Register"
 
-      expect(current_path).to eq new_dojo_path
-      expect(page).to have_content "Password cannot be blank"
+      expect(page).to have_content "Password can't be blank"
     end
   end
 end

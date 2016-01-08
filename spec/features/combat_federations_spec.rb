@@ -35,4 +35,22 @@ RSpec.feature "CombatFederations", type: :feature do
 
     expect(page).to have_content "Welcome Combat Federation: Aaron's Ninjas to Lenny's Ninjas"
   end
+
+  scenario "non fed dojo can't go to fed dashboard" do
+    dojo_1 = Dojo.create(dojo_name: "Lenny's Ninjas", password: "password")
+    dojo_2 = Dojo.create(dojo_name: "Beth's Ninjas", password: "password")
+    dojo_3 = Dojo.create(dojo_name: "Toni's Ninjas", password: "password")
+
+    ApplicationController.any_instance.stubs(:current_dojo).returns(dojo_1)
+
+    visit dojo_path
+    # save_and_open_page
+    expect(page).not_to have_link "Combat Federation Dashboard"
+
+    visit combat_federation_dojos_path
+    expect(page).to have_content "404"
+
+    visit combat_federation_dojo_path(dojo_2)
+    expect(page).to have_content "404"
+  end
 end

@@ -1,3 +1,5 @@
-<h1> <%= @dojo.dojo_name %> </h1>
+<h1> <%= @dojo.dojo_name %> : an official combat federation dojo </h1>
+
+<%= render 'partials/show_dojo' %>
 
 <%= link_to "Invite New Combatant", new_dojo_combatant_path %>

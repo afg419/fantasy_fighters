@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 20160107203122) do
     t.string   "password_digest"
     t.integer  "wins",            default: 0
     t.integer  "matches",         default: 0
-    t.string   "role",            default: "0"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "role",            default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
 end

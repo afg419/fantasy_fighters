@@ -4,4 +4,6 @@ class Dojo < ActiveRecord::Base
   validates :dojo_name, presence: true,
                         uniqueness: true
   validates :password, presence: true
+
+  enum role: ["default", "combat_federation"]
 end

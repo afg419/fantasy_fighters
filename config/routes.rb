@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :combatants, only: [:new]
   end
 
-
+  namespace :combat_federation do
+    resources :dojos, only: [:index, :show]
+  end
 end

@@ -1,0 +1,9 @@
+<h1>Combat Federation Dashboard</h1>
+<h3>Dojos:</h3>
+<div id = "dojos">
+  <ul>
+    <% @dojos.each do |dojo| %>
+    <li><%= link_to dojo.dojo_name, combat_federation_dojo_path(dojo) %></li>
+    <% end %>
+  </ul>
+</div>

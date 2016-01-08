@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest
       t.integer :wins, default: 0
       t.integer :matches, default: 0
-      t.string :role, default: 0
+      t.integer :role, default: 0
 
       t.timestamps null: false
     end

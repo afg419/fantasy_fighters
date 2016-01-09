@@ -10,7 +10,7 @@ RSpec.feature "CombatFederations", type: :feature do
     fill_in "Dojo name", with: "Aaron's Ninjas"
     fill_in "Password", with: "password"
     click_on "Login"
-
+    # save_and_open_page
     expect(current_path).to eq dojo_path
     expect(page).to have_link "Combat Federation Dashboard"
   end

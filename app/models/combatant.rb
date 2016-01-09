@@ -12,9 +12,16 @@ class Combatant < ActiveRecord::Base
                       inclusion: { in: (0..15) }
   validates :hp, presence: true
 
+  validate :attributes_total
+
+  def attributes_total
+    unless strength + intelligence + dexterity == 15
+      errors.add(:invalid_attribute_total, "Total combatant skill must add to 15")
+    end
+  end
 
 
   def to_param
-    "#{name.capitalize.gsub(" ","***")}" if name
+    "#{name.capitalize.gsub(" ","-")}"
   end
 end

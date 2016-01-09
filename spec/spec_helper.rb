@@ -14,12 +14,37 @@
 #
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
+# Spec::Runner.configure do |config|
+#
+#
+# end
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+
+  # config.use_transactional_fixtures = false
+  config.before :suite do
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.before :each do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before :each do
+    DatabaseCleaner.start
+  end
+
+  config.after :each do
+    DatabaseCleaner.clean
+  end
 
   config.mock_with :mocha
 
@@ -32,6 +57,8 @@ RSpec.configure do |config|
     #     # => "be bigger than 2 and smaller than 4"
     # ...rather than:
     #     # => "be bigger than 2"
+
+
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 

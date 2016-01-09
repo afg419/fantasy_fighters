@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_dojo, :current_federation?
-  # before_action :current_dojo
 
   def current_federation?
     current_dojo && current_dojo.combat_federation?

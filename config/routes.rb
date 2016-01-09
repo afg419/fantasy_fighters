@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resource :dojo, only: [:new, :create, :show] do
-    resources :combatants, only: [:new]
+    resources :combatants, only: [:new, :create, :show]
   end
 
   namespace :combat_federation do

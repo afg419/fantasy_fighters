@@ -1,0 +1,22 @@
+<%= form_for([@dojo,@combatant] ) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :race %>
+  <%= select_tag(:race, options_for_select(
+    ["Ogre","Human","Elf"]
+  )) %>
+
+  <%= f.label :strength %>
+  <%= number_field(:combatant, :strength, in: 0.0..15.0, step: 1) %>
+
+  <%= f.label :intelligence %>
+  <%= number_field(:combatant, :intelligence, in: 0.0..15.0, step: 1) %>
+
+  <%= f.label :dexterity %>
+  <%= number_field(:combatant, :dexterity, in: 0.0..15.0, step: 1) %>
+
+  <%= f.submit "Initiate Combatant" %>
+
+<% end %>

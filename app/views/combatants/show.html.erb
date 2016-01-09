@@ -1,0 +1,7 @@
+<h1> <%= @combatant.name %> </h1>
+
+<ul>
+  <% @combatant.attributes.keys[2..-4].each do |k| %>
+    <li><%= "#{k.capitalize}: #{@combatant[k]}" %></li>
+  <% end %>
+</ul>

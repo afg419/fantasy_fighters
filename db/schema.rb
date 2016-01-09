@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107203122) do
+ActiveRecord::Schema.define(version: 20160109193657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "combatants", force: :cascade do |t|
+    t.string   "name"
+    t.string   "race"
+    t.integer  "strength"
+    t.integer  "dexterity"
+    t.integer  "intelligence"
+    t.integer  "hp"
+    t.integer  "matches",      default: 0
+    t.integer  "wins",         default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "dojo_id"
+  end
+
+  add_index "combatants", ["dojo_id"], name: "index_combatants_on_dojo_id", using: :btree
 
   create_table "dojos", force: :cascade do |t|
     t.string   "dojo_name"
@@ -26,4 +42,5 @@ ActiveRecord::Schema.define(version: 20160107203122) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_foreign_key "combatants", "dojos"
 end

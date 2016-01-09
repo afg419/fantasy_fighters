@@ -44,7 +44,7 @@ RSpec.feature "CombatFederations", type: :feature do
     ApplicationController.any_instance.stubs(:current_dojo).returns(dojo_1)
 
     visit dojo_path
-    # save_and_open_page
+
     expect(page).not_to have_link "Combat Federation Dashboard"
 
     visit combat_federation_dojos_path

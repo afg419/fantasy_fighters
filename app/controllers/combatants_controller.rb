@@ -12,12 +12,16 @@ class CombatantsController < ApplicationController
       redirect_to dojo_combatant_path(@combatant)
     else
       flash[:error] = @combatant.errors.full_messages.join(", ")
-      render :new
+      redirect_to new_dojo_combatant_path
     end
   end
 
   def show
-    @combatant = current_dojo.combatants.find_by(name: params[:id].gsub("-", " "))
+    if params[:dojo_name]
+      @combatant = Dojo.find_by(dojo_name: params[:dojo_name]).combatants.find_by(name: params[:id].gsub("-", " "))
+    else
+      @combatant = current_dojo.combatants.find_by(name: params[:id].gsub("-", " "))
+    end
   end
 
   def edit

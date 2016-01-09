@@ -2,7 +2,7 @@ class CombatFederation::DojosController < ApplicationController
   before_action :require_combat_federation
 
   def index
-      @dojos = Dojo.all
+    @dojos = Dojo.all
   end
 
   def show

@@ -12,4 +12,13 @@ Rails.application.routes.draw do
   namespace :combat_federation do
     resources :dojos, only: [:index, :show]
   end
+
+  # resource :combat_federation, only: [:new, :create, :show] do
+  #   resources :combatants, only: [:new, :create, :show, :edit, :update, :destroy]
+  # end
+
+
+  # namespace :combat_federation do
+  #   resources :combatants, only: [:index, :show]
+  # end
 end

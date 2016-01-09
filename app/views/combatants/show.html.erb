@@ -5,3 +5,6 @@
     <li><%= "#{k.capitalize}: #{@combatant[k]}" %></li>
   <% end %>
 </ul>
+
+<%= link_to "Change Name", edit_dojo_combatant_path(@combatant) %>
+<%= link_to "Disqualify Combatant", dojo_combatant_path(@combatant), method: :delete %>

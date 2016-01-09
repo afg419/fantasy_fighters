@@ -1,1 +1,5 @@
-Combatant list!!!
+<ul>
+  <% current_dojo.combatants.each do |c|%>
+  <li><%= link_to c.name, dojo_combatant_path(c) %> || wins: <%= c.wins %> || matches: <%= c.matches %></li>
+  <% end %>
+</ul>

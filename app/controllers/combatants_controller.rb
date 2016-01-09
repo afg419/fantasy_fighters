@@ -17,7 +17,23 @@ class CombatantsController < ApplicationController
   end
 
   def show
+    @combatant = current_dojo.combatants.find_by(name: params[:id].gsub("-", " "))
+  end
+
+  def edit
     @combatant = current_dojo.combatants.find_by(name: params[:id])
+  end
+
+  def update
+    @combatant = current_dojo.combatants.find_by(name: params[:format])
+    @combatant.update(name: params[:combatant][:name])
+    redirect_to dojo_combatant_path(@combatant)
+  end
+
+  def destroy
+    @combatant = current_dojo.combatants.find_by(name: params[:id].gsub("-", " "))
+    @combatant.destroy
+    redirect_to dojo_path
   end
 
 private

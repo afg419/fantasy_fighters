@@ -22,6 +22,6 @@ class Combatant < ActiveRecord::Base
 
 
   def to_param
-    "#{name.capitalize.gsub(" ","-")}"
+    "#{name.gsub(" ","-")}"
   end
 end

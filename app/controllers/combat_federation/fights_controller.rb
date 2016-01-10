@@ -39,12 +39,21 @@ class CombatFederation::FightsController < ApplicationController
     attack_2 = combatant_2[skill_2] + modifier(skill_2, skill_1)
 
     if attack_1 < attack_2
-      combatant_2
+      wins_loses(combatant_2, combatant_1, skill_2)
     elsif attack_2 < attack_1
-      combatant_1
+      wins_loses(combatant_1, combatant_2, skill_1)
     else
-      [combatant_1, combatant_2].sample
+      x = [combatant_1, combatant_2].shuffle
+      wins_loses(x[0],x[1])
     end
+  end
+
+  def wins_loses(combatant_2, combatant_1, winner_skill = nil)
+    combatant_1.update(hp: combatant_1.hp - 2)
+    combatant_2.update(hp: combatant_2.hp + 2)
+    combatant_2.update_attribute(winner_skill, combatant_2[winner_skill] + 2) if winner_skill
+
+    combatant_2
   end
 
   def modifier(skill_1, skill_2)

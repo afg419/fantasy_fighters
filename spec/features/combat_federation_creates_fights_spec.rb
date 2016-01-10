@@ -37,7 +37,9 @@ RSpec.feature "CombatFederationCreatesFights", type: :feature do
     click_on "Fight!"
 
     expect(current_path).to eq combat_federation_dojos_path
-    expect(page).to have_content "Carl from Lenny's Ninjas defeated Taylor from Beth's Ninjas"
+    expect(page).to have_content "Carl from Lenny's Ninjas"
+    expect(page).to have_content "Taylor from Beth's Ninjas"
+
 
     click_on "Logout"
 
@@ -48,6 +50,7 @@ RSpec.feature "CombatFederationCreatesFights", type: :feature do
     fill_in "Password", with: "password"
     click_on "Login"
 
-    expect(page).to have_content "Carl defeated Taylor of Beth's Ninjas"
+    expect(page).to have_content "Carl"
+    expect(page).to have_content "Taylor of Beth's Ninjas"
   end
 end

@@ -19,6 +19,9 @@ RSpec.describe CombatFederation::FightsController, type: :controller do
 
         fight = Fight.last
 
+        expect(fight.winning_combatant.hp).to eq 10
+        expect(fight.losing_combatant.hp).to eq 6
+
         expect([fight.winning_combatant.name, fight.losing_combatant.name].include?("Hotdog")).to be true
         expect([fight.winning_combatant.name, fight.losing_combatant.name].include?("Taylor")).to be true
 

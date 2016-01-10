@@ -1,0 +1,13 @@
+<%= form_for(@fight, url: '/combat_federation/fight/new/combatants', method: :get) do |f| %>
+
+  <%= select_tag(:dojo1, options_for_select(
+    Dojo.all.map{ |dojo| dojo.dojo_name }
+    )) %>
+
+  <%= select_tag(:dojo2, options_for_select(
+    Dojo.all.map{ |dojo| dojo.dojo_name }
+    )) %>
+
+    <%= f.submit "Select fighters"  %>
+
+<% end %>

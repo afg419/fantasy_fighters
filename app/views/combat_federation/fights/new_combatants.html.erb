@@ -1,0 +1,14 @@
+<%= form_for(@fight) %>
+
+<%= select_tag(:combatant_1, options_for_select(
+  @dojo_1_combatants_names
+  )) %>
+
+<%= select_tag(:combatant_2, options_for_select(
+  @dojo_2_combatants_names
+  )) %>
+
+  <%= f.submit "Select fighters"  %>
+
+
+<% end %>

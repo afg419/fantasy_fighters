@@ -1,0 +1,2 @@
+module CombatFederation::FightsHelper
+end

@@ -10,10 +10,9 @@
 
 <ul>
   <% Fight.all.each do |fight| %>
-
     <li><%= fight.winning_combatant.name %> from <%= fight.winning_dojo.dojo_name %> defeated <%= fight.losing_combatant.name %> from <%= fight.losing_dojo.dojo_name %></li>
-
   <% end %>
 </ul>
 
 <%= link_to "Set up a match", new_combat_federation_fight_path %>
+<%= link_to "Back to Dojo", dojo_path %>

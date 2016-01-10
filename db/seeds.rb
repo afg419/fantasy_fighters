@@ -18,8 +18,8 @@ c_4 = Combatant.create({name: "Taylor", race: "Human", strength: 5, intelligence
 dojo_1.combatants << c_1
 dojo_1.combatants << c_2
 
-dojo_2.combatants << c_2
+dojo_2.combatants << c_2.clone
 dojo_2.combatants << c_3
 
-dojo_3.combatants << c_2
+dojo_3.combatants << c_2.clone
 dojo_3.combatants << c_4

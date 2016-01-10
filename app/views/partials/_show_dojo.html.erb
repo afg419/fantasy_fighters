@@ -3,3 +3,19 @@
   <li> <%= link_to(c.name, dojo_combatant_path(c, dojo_name: @dojo.dojo_name)) %> --- wins: <%= c.wins %> --- matches: <%= c.matches %></li>
   <% end %>
 </ul>
+
+<h3>Victories: </h3>
+
+<ul>
+  <% @dojo.winning_fights.each do |fight| %>
+  <li> <%= fight.winning_combatant.name %> defeated <%= fight.losing_combatant.name %> of <%= fight.losing_dojo.dojo_name %> </li>
+  <% end %>
+</ul>
+
+<h3>Defeats: </h3>
+
+<ul>
+  <% @dojo.losing_fights.each do |fight| %>
+  <li> <%= fight.losing_combatant.name %> was defeated by <%= fight.winning_combatant.name %> of <%= fight.winning_dojo.dojo_name %> </li>
+  <% end %>
+</ul>

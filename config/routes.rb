@@ -11,10 +11,10 @@ Rails.application.routes.draw do
 
   namespace :combat_federation do
     resources :dojos, only: [:index, :show]
-    resource :fight, only: [:new]
+    resource :fight, only: [:new, :create]
   end
 
-  get '/combat_federation/fight/new/combatants', to: 'combat_federation/fights#new_combatants'
+  # get '/combat_federation/fight/new/combatants', to: 'combat_federation/fights#new_combatants'
 
   # get '/combat_federation/fight', to: 'fights#new'
 

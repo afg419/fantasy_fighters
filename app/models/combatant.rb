@@ -1,5 +1,7 @@
 class Combatant < ActiveRecord::Base
   belongs_to :dojo
+  has_many :winning_fights, :class_name => "Fight", :foreign_key => "winning_combatant_id"
+  has_many :losing_fights, :class_name => "Fight", :foreign_key => "losing_combatant_id"
 
   validates :name, presence: true,
                     uniqueness: { scope: :dojo_id }

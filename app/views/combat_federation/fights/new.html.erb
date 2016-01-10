@@ -1,13 +1,15 @@
-<%= form_for(@fight, url: '/combat_federation/fight/new/combatants', method: :get) do |f| %>
+<%= form_for(@fight, url: combat_federation_fight_path) do |f| %>
 
-  <%= select_tag(:dojo1, options_for_select(
-    Dojo.all.map{ |dojo| dojo.dojo_name }
-    )) %>
+  <%= select_tag(:combatant_1, options_for_select(
+  Combatant.includes(:dojo).all.map { |combatant| combatant.dojo.dojo_name + ": " + combatant.name}
+))
+  %>
 
-  <%= select_tag(:dojo2, options_for_select(
-    Dojo.all.map{ |dojo| dojo.dojo_name }
-    )) %>
+  <%= select_tag(:combatant_2, options_for_select(
+  Combatant.includes(:dojo).all.map { |combatant| combatant.dojo.dojo_name + ": " + combatant.name}
+))
+   %>
 
-    <%= f.submit "Select fighters"  %>
+  <%= f.submit "Fight!"  %>
 
 <% end %>

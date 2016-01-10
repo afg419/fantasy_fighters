@@ -40,7 +40,6 @@ RSpec.feature "CombatFederationCreatesFights", type: :feature do
     expect(page).to have_content "Carl from Lenny's Ninjas"
     expect(page).to have_content "Taylor from Beth's Ninjas"
 
-
     click_on "Logout"
 
     visit root_path
@@ -50,6 +49,7 @@ RSpec.feature "CombatFederationCreatesFights", type: :feature do
     fill_in "Password", with: "password"
     click_on "Login"
 
+    expect(page).to have_content "matches: 1"
     expect(page).to have_content "Carl"
     expect(page).to have_content "Taylor of Beth's Ninjas"
   end

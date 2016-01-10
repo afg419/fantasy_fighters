@@ -49,8 +49,8 @@ class CombatFederation::FightsController < ApplicationController
   end
 
   def wins_loses(combatant_2, combatant_1, winner_skill = nil)
-    combatant_1.update(hp: combatant_1.hp - 2)
-    combatant_2.update(hp: combatant_2.hp + 2)
+    combatant_1.update(hp: combatant_1.hp - 2, matches: combatant_1.matches + 1)
+    combatant_2.update(hp: combatant_2.hp + 2, matches: combatant_2.matches + 1, wins: combatant_2.wins + 1)
     combatant_2.update_attribute(winner_skill, combatant_2[winner_skill] + 2) if winner_skill
 
     combatant_2
@@ -63,18 +63,4 @@ class CombatFederation::FightsController < ApplicationController
       0
     end
   end
-
-
-  # {"utf8"=>"✓",
-  #  "combatant_1"=>"Lenny's Ninjas: Carl",
-  #  "combatant_2"=>"Beth's Ninjas: Taylor",
-  #  "commit"=>"Fight!",
-  #  "controller"=>"combat_federation/fights",
-  #  "action"=>"create"}
-
-  # def new_combatants
-  #   @dojo_1_combatants_names = Dojo.find_by(dojo_name: params[:dojo_1]).combatants.pluck(:name)
-  #   @dojo_2_combatants_names = Dojo.find_by(dojo_name: params[:dojo_2]).combatants.pluck(:name)
-  #   @fight = Fight.new
-  # end
 end
